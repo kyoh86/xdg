@@ -6,7 +6,9 @@ import (
 )
 
 const (
+	// ConfigHomeEnv is the name of the environment variable holding a user configuration directory path.
 	ConfigHomeEnv = "XDG_CONFIG_HOME"
+	// ConfigDirsEnv is the name of the environment variable holding system configuration directory paths.
 	ConfigDirsEnv = "XDG_CONFIG_DIRS"
 )
 

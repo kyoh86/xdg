@@ -7,7 +7,9 @@ import (
 )
 
 const (
+	// DataHomeEnv is the name of the environment variable holding a user data directory path.
 	DataHomeEnv = "XDG_DATA_HOME"
+	// DataDirsEnv is the name of the environment variable holding system data directory paths.
 	DataDirsEnv = "XDG_DATA_DIRS"
 )
 

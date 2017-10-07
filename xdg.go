@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 )
 
-// ErrNotFound indicates that any files can be found.
+// ErrNotFound indicates that a file cannot be found in any directory.
 var ErrNotFound = errors.New("not found")
 
 func alternate(str, alt string) string {

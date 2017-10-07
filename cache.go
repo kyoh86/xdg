@@ -3,11 +3,11 @@ package xdg
 import "os"
 
 const (
+	// CacheHomeEnv is the name of the environment variable holding a cache directory path.
 	CacheHomeEnv = "XDG_CACHE_HOME"
-	CacheDirsEnv = "XDG_CACHE_DIRS"
 )
 
-// CacheHome returns a user XDG data directory (XDG_CACHE_HOME).
+// CacheHome returns a XDG cache directory (XDG_CACHE_HOME).
 func CacheHome() string {
 	return altHome(os.Getenv(CacheHomeEnv), ".cache")
 }

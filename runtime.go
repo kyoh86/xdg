@@ -3,6 +3,7 @@ package xdg
 import "os"
 
 const (
+	// RuntimeDirEnv is the name of the environment variable holding a runtime directory path.
 	RuntimeDirEnv = "XDG_RUNTIME_DIR"
 )
 
