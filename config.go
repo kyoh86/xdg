@@ -1,31 +1,11 @@
 package xdg
 
-import (
-	"os"
-	"path/filepath"
-)
-
 const (
 	// ConfigHomeEnv is the name of the environment variable holding a user configuration directory path.
 	ConfigHomeEnv = "XDG_CONFIG_HOME"
 	// ConfigDirsEnv is the name of the environment variable holding system configuration directory paths.
 	ConfigDirsEnv = "XDG_CONFIG_DIRS"
 )
-
-// ConfigHome returns a user XDG configuration directory (XDG_CONFIG_HOME).
-func ConfigHome() string {
-	return altHome(os.Getenv(ConfigHomeEnv), ".config")
-}
-
-// ConfigDirs returns system XDG configuration directories (XDG_CONFIG_DIRS).
-func ConfigDirs() []string {
-	// XDG_CONFIG_DIRS
-	xdgDirs := alternate(
-		os.Getenv(ConfigDirsEnv),
-		filepath.Join("/", "etc", "xdg"),
-	)
-	return filepath.SplitList(xdgDirs)
-}
 
 // AllConfigDirs returns all XDG configuration directories.
 func AllConfigDirs() []string {
