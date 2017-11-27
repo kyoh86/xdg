@@ -1,7 +1,7 @@
 .PHONY: default gen test vendor install
 
 example:
-	go run cmd/xdg-example/main.go
+	go run -tags=example cmd/xdg-example/main.go
 
 default:
 	echo use gen, test, vendor or install
