@@ -1,10 +1,19 @@
-test:
-	go test $(shell go list ./... | grep -vFe'/vendor/')
+.PHONY: default gen test vendor install
 
 example:
 	go run cmd/xdg-example/main.go
 
-gen:
-	go generate $(shell go list ./... | grep -vFe'/vendor/')
+default:
+	echo use gen, test, vendor or install
 
-.PHONY: test example gen
+gen:
+	go generate ./...
+
+test:
+	go test ./...
+
+vendor:
+	dep ensure
+
+install:
+	go install ./...
