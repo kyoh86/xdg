@@ -7,6 +7,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: go get
+          command: "go get -t ./..."
+      - run:
           name: go test
           command: "go test -race ./..."
   cover:
@@ -15,6 +18,9 @@ jobs:
       - image: kyoh86/gotest
     steps:
       - checkout
+      - run:
+          name: go get
+          command: "go get -t ./..."
       - run:
           name: take a coverage
           command: "goverage -coverprofile=coverage.out ./..."
@@ -27,6 +33,9 @@ jobs:
       - image: kyoh86/gotest
     steps:
       - checkout
+      - run:
+          name: go get
+          command: "go get -t ./..."
       - run:
           name: search lints
           command: "gometalinter --config /etc/gometalinter/config.json ./... > ./lints.txt || :"
