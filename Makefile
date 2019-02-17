@@ -1,14 +1,14 @@
-.PHONY: default gen test example
+.PHONY: gen test lint example
 
-default:
-	echo use gen, test, vendor or install
+example: lint
+	go run -tags=example cmd/xdg-example/main.go
+
+lint: test
+	gometalinter ./...
+
+test: gen
+	go test -v --race ./...
 
 gen:
 	go generate ./...
-
-test:
-	go test ./...
-
-example:
-	go run -tags=example cmd/xdg-example/main.go
 
