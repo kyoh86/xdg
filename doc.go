@@ -1,0 +1,4 @@
+/*
+Package xdg 
+*/
+package xdg

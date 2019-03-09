@@ -1,14 +1,16 @@
-.PHONY: gen test lint example
+.PHONY: gen lint test sample
 
-example: lint
-	go run -tags=example cmd/xdg-example/main.go
-
-lint: test
-	gometalinter ./...
-
-test: gen
-	go test -v --race ./...
+VERSION := `git vertag get`
+COMMIT  := `git rev-parse HEAD`
 
 gen:
 	go generate ./...
 
+lint: gen
+	golangci-lint run
+
+test: lint
+	go test v --race ./...
+
+sample:
+	go run -tags=sample ./cmd/xdg-sample/main.go
