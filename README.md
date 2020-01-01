@@ -2,7 +2,7 @@
 
 Light weight helper functions in golang to get config,
 data, cache and some user directories according to
-the XDG Base Directory and XDG User Directory Specification.
+the [XDG Base Directory](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html) and XDG User Directory Specification.
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/kyoh86/xdg)](https://goreportcard.com/report/github.com/kyoh86/xdg)
 [![Coverage Status](https://img.shields.io/codecov/c/github/kyoh86/xdg.svg)](https://codecov.io/gh/kyoh86/xdg)
@@ -145,6 +145,34 @@ TemplatesDir() will get a templates directory path:  /home/kyoh86/Templates
 PublicShareDir() will get a public share directory path:  /home/kyoh86/Public
 ...And `XDG_PublicShare_DIR` envar will be supported:  /.PublicShare 
 ```
+
+## Default path
+
+The package defines defaults for XDG directories.
+
+#### XDG Base Directory
+
+| XDG Variable    | Mac OS                          | Windows                              | Others                           |
+| :---            | :-----                          | :---                                 | :---                             |
+| XDG_CONFIG_HOME | `~/Library/Preferences`         | `%LOCALAPPDATA%`                     | `~/.config`                      |
+| XDG_CONFIG_DIRS | `/Library/Preferences`          | `%PROGRAMDATA%`                      | `/etc/xdg`                       |
+| XDG_DATA_HOME   | `~/Library/Application Support` | `%LOCALAPPDATA%`                     | `~/.local/share`                 |
+| XDG_DATA_DIRS   | `/Library/Application Support`  | `%APPDATA%\Roaming`, `%PROGRAMDATA%` | `/usr/local/share`, `/usr/share` |
+| XDG_CACHE_HOME  | `~/Library/Caches`              | `%LOCALAPPDATA%\cache`               | `~/.cache`                       |
+| XDG_RUNTIME_DIR | `~/Library/Application Support` | `%LOCALAPPDATA%`                     | `/run/user/UID`                  |
+
+#### XDG User Directory
+
+| XDG Variable        | Mac OS        | Windows                   | Others        |
+| :---                | :-----        | :---                      | :---          |
+| XDG_DESKTOP_DIR     | `~/Desktop`   | `%USERPROFILE%/Desktop`   | `~/Desktop`   |
+| XDG_DOWNLOAD_DIR    | `~/Downloads` | `%USERPROFILE%/Downloads` | `~/Downloads` |
+| XDG_DOCUMENTS_DIR   | `~/Documents` | `%USERPROFILE%/Documents` | `~/Documents` |
+| XDG_PICTURES_DIR    | `~/Pictures`  | `%USERPROFILE%/Pictures`  | `~/Pictures`  |
+| XDG_MUSIC_DIR       | `~/Music`     | `%USERPROFILE%/Music`     | `~/Music`     |
+| XDG_VIDEOS_DIR      | `~/Movies`    | `%USERPROFILE%/Videos`    | `~/Videos`    |
+| XDG_TEMPLATES_DIR   | `~/Templates` | `%USERPROFILE%/Templates` | `~/Templates` |
+| XDG_PUBLICSHARE_DIR | `~/Public`    | `%PUBLIC%`                | `~/Public`    |
 
 # LICENSE
 
