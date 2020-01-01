@@ -1,4 +1,4 @@
-// +build windows
+// +build darwin
 
 package xdg
 
@@ -9,7 +9,7 @@ import (
 
 // DataHome returns a user XDG data directory (XDG_DATA_HOME).
 func DataHome() string {
-	return altHome(os.Getenv(DataHomeEnv), os.Getenv("LOCALAPPDATA"))
+	return altHome(os.Getenv(DataHomeEnv), "Library", "Application Support")
 }
 
 // DataDirs returns system XDG data directories (XDG_DATA_DIRS).
@@ -20,7 +20,6 @@ func DataDirs() []string {
 		return xdgDirs
 	}
 	return []string{
-		filepath.Join(os.Getenv("APPDATA"), "Roaming"),
-		os.Getenv("PROGRAMDATA"),
+		filepath.Join("/", "Library", "Application Support"),
 	}
 }

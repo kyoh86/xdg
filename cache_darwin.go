@@ -1,10 +1,12 @@
-// +build !windows,!darwin
+// +build darwin
 
 package xdg
 
-import "os"
+import (
+	"os"
+)
 
 // CacheHome returns a XDG cache directory (XDG_CACHE_HOME).
 func CacheHome() string {
-	return altHome(os.Getenv(CacheHomeEnv), ".cache")
+	return altHome(os.Getenv(CacheHomeEnv), "Library", "Caches")
 }

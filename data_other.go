@@ -1,11 +1,10 @@
-// +build !windows
+// +build !windows,!darwin
 
 package xdg
 
 import (
 	"os"
 	"path/filepath"
-	"strings"
 )
 
 // DataHome returns a user XDG data directory (XDG_DATA_HOME).
@@ -16,12 +15,12 @@ func DataHome() string {
 // DataDirs returns system XDG data directories (XDG_DATA_DIRS).
 func DataDirs() []string {
 	// XDG_DATA_DIRS
-	xdgDirs := alternate(
-		os.Getenv(DataDirsEnv),
-		strings.Join([]string{
-			filepath.Join("/", "usr", "local", "share"),
-			filepath.Join("/", "usr", "share"),
-		}, string(filepath.ListSeparator)),
-	)
-	return filepath.SplitList(xdgDirs)
+	xdgDirs := filepath.SplitList(os.Getenv(DataDirsEnv))
+	if len(xdgDirs) != 0 {
+		return xdgDirs
+	}
+	return []string{
+		filepath.Join("/", "usr", "local", "share"),
+		filepath.Join("/", "usr", "share"),
+	}
 }

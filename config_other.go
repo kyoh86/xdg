@@ -1,4 +1,4 @@
-// +build !windows
+// +build !windows,!darwin
 
 package xdg
 
@@ -15,9 +15,11 @@ func ConfigHome() string {
 // ConfigDirs returns system XDG configuration directories (XDG_CONFIG_DIRS).
 func ConfigDirs() []string {
 	// XDG_CONFIG_DIRS
-	xdgDirs := alternate(
-		os.Getenv(ConfigDirsEnv),
+	xdgDirs := filepath.SplitList(os.Getenv(ConfigDirsEnv))
+	if len(xdgDirs) != 0 {
+		return xdgDirs
+	}
+	return []string{
 		filepath.Join("/", "etc", "xdg"),
-	)
-	return filepath.SplitList(xdgDirs)
+	}
 }

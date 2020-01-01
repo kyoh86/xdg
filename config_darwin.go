@@ -1,4 +1,4 @@
-// +build windows
+// +build darwin
 
 package xdg
 
@@ -9,10 +9,10 @@ import (
 
 // ConfigHome returns a user XDG configuration directory (XDG_CONFIG_HOME).
 func ConfigHome() string {
-	return alternate(os.Getenv(ConfigHomeEnv), os.Getenv("LOCALAPPDATA"))
+	return altHome(os.Getenv(ConfigHomeEnv), "Library", "Preferences")
 }
 
-// ConfigDirs returns system XDG configuration directories (XDG_CONFIG_DIRS).
+// ConfigDirs returns system XDG data directories (XDG_CONFIG_DIRS).
 func ConfigDirs() []string {
 	// XDG_CONFIG_DIRS
 	xdgDirs := filepath.SplitList(os.Getenv(ConfigDirsEnv))
@@ -20,6 +20,6 @@ func ConfigDirs() []string {
 		return xdgDirs
 	}
 	return []string{
-		os.Getenv("PROGRAMDATA"),
+		filepath.Join("/", "Library", "Preferences"),
 	}
 }
