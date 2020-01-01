@@ -9,7 +9,7 @@ import (
 
 // DataHome returns a user XDG data directory (XDG_DATA_HOME).
 func DataHome() string {
-	return altHome(os.Getenv(DataHomeEnv), os.Getenv("LOCALAPPDATA"))
+	return alternate(os.Getenv(DataHomeEnv), os.Getenv("LOCALAPPDATA"))
 }
 
 // DataDirs returns system XDG data directories (XDG_DATA_DIRS).
