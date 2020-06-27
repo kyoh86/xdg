@@ -11,10 +11,10 @@ jobs:
       matrix:
         os: [ubuntu, windows, macos]
     steps:
-      - uses: actions/setup-go@v1
-        with:
-          go-version: 1.13.x
       - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
+        with:
+          go-version: 1.14.x
       - name: get dependencies
         run: go get -v -t -d ./...
 
@@ -24,16 +24,20 @@ jobs:
   lint-and-cover:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-go@v1
-        with:
-          go-version: 1.13.x
       - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
+        with:
+          go-version: 1.14.x
       - name: get dependencies
         run: go get -v -t -d ./...
       - name: vendoring
         run: go mod vendor
 
-      # - uses: kyoh86/action-golangci-lint@v1 
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v1
+        with:
+          # Required: the version of golangci-lint is required and must be specified without patch version: we always use the latest patch version.
+          version: v1.27
 
       - name: take coverage
         run: go test -coverprofile=coverage.txt -covermode=count ./...
