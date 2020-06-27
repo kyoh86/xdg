@@ -2,6 +2,11 @@
 
 package xdg
 
+import (
+	"os"
+	"path/filepath"
+)
+
 func altUserProfile(path string, suffix ...string) string {
 	if path != "" {
 		return path
