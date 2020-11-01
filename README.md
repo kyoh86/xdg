@@ -4,8 +4,10 @@ Light weight helper functions in golang to get config,
 data, cache and some user directories according to
 the [XDG Base Directory](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html) and XDG User Directory Specification.
 
+[![PkgGoDev](https://pkg.go.dev/badge/kyoh86/xdg)](https://pkg.go.dev/kyoh86/xdg)
 [![Go Report Card](https://goreportcard.com/badge/github.com/kyoh86/xdg)](https://goreportcard.com/report/github.com/kyoh86/xdg)
 [![Coverage Status](https://img.shields.io/codecov/c/github/kyoh86/xdg.svg)](https://codecov.io/gh/kyoh86/xdg)
+[![Release](https://github.com/kyoh86/xdg/workflows/Release/badge.svg)](https://github.com/kyoh86/xdg/releases)
 
 ## Install
 
