@@ -1,5 +1,7 @@
 # xdg
 
+DEPRECATED: we can use "os.UserXXXDir" instead of this package.
+
 Light weight helper functions in golang to get config,
 data, cache and some user directories according to
 the [XDG Base Directory](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html) and XDG User Directory Specification.
